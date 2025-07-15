@@ -13,7 +13,7 @@ export default function QuizQuestion({question,options,currentIndex,onSelect,sel
     return (
         <ClientOnly>
             <h2 className="text-lg font-bold mb-3">Question {currentIndex + 1} of {total}</h2>
-            <p className="text-muted mb-5">{question}</p>
+            <p className="text-muted mb-5" dangerouslySetInnerHTML={{__html:question}}/>
 
             <div className="space-y-3">
                 {options.map((option, i) => (
