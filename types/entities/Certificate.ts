@@ -1,11 +1,14 @@
 import { Level } from "./Level";
 
-export type Certificate = {
+export type BaseCertificate = {
     id: number;
     obtainedAt: string;
+    level: Level;
+};
+
+export type Certificate = BaseCertificate& {
     user: {
         name: string;
         id:number
     };
-    level:Level
 }
