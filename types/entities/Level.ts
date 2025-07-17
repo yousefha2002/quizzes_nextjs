@@ -1,4 +1,4 @@
-import { Category } from "../Category";
+import { Category } from "./Categroy";
 
 export type Level = {
     id: number;

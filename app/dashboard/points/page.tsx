@@ -1,40 +1,42 @@
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
-import Table from "@/components/ui/table/Table";
-import TableCell from "@/components/ui/table/TableCell";
-import TableHead from "@/components/ui/table/TableHead";
-import TableRow from "@/components/ui/table/TableRow";
-import pointsDetails from "@/data/fakes/pointsDetails";
+import PointsTable from "@/components/dash/points/PointsTable";
+import Pagination from "@/components/shared/Pagination";
+import EmptyState from "@/components/shared/EmptyState";
+import { getUserPoints } from "@/lib/points";
+import { getUserToken } from "@/lib/auth";
 
-const headers = ["Date", "Activity", "Points"];
+type Props = {
+    searchParams: Promise<{ page?: string }>;
+};
 
-export default function Points() {
+export default async function Points({ searchParams }: Props) {
+    const search = await searchParams;
+    const currentPage = search.page ? +search.page : 1;
+    
+    const token = await getUserToken();
+    const tokenValue = token?.value;
+
+    const { totalPages, points } = await getUserPoints(currentPage, 10,tokenValue);
+
     return (
         <Container>
             <SectionTitle>Points Details</SectionTitle>
-                <Table>
-                    <TableHead columns={headers} />
-                    <tbody>
-                        {pointsDetails.map(({ id, date, activity, points }) => (
-                            <TableRow
-                            key={id}
-                            cells={[
-                                date,
-                                activity,
-                                <span className="font-semibold text-right block">{points}</span>,
-                            ]}
-                            />
-                        ))}
-                        <tr className="border-t border-white/10">
-                            <TableCell colSpan={2} className="text-left font-semibold text-white">
-                                Total Points
-                            </TableCell>
-                            <TableCell className="text-right font-bold text-primary text-lg">
-                                {220}
-                            </TableCell>
-                        </tr>
-                    </tbody>
-                </Table>
+
+            {points.length === 0 ? (
+                <EmptyState
+                    title="No Points Yet"
+                    message="You haven't earned any points yet."
+                />
+            ) : (
+                <PointsTable points={points} />
+            )}
+
+            {totalPages > 1 && (
+                <div className="mt-6">
+                    <Pagination currentPage={currentPage} totalPages={totalPages} />
+                </div>
+            )}
         </Container>
     );
 }
