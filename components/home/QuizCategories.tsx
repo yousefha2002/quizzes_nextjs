@@ -9,7 +9,7 @@ export default async function QuizCategories() {
     const {categories} = await getCategories();
     if (!categories.length) return null;
     return (
-        <Container>
+        <Container className='py-12'>
             <SectionTitle>Explore Categories</SectionTitle>
             <CardGrid
                 items={categories.slice(0, 6)}
