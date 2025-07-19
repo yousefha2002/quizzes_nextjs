@@ -1,7 +1,7 @@
 'use client';
 
 import { requestCertificate } from '@/actions/request-certificate';
-import ErrorMessage from '@/components/ui/forms/ErrorMessage';
+import ErrorMessage from '@/components/ui/forms/Message';
 import { redirect } from 'next/navigation';
 import React, { useActionState } from 'react';
 

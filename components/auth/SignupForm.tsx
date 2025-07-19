@@ -4,7 +4,7 @@ import InputField from '@/components/ui/forms/InputField';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import SubmitButton from '../ui/forms/SubmitButton';
 import { signup } from '@/actions/signup';
-import ErrorMessage from '../ui/forms/ErrorMessage';
+import Message from '../ui/forms/Message';
 import { redirect } from 'next/navigation';
 export default function SignupForm() {
     const [state, action, isPending] = useActionState(signup, null);
@@ -38,7 +38,7 @@ export default function SignupForm() {
                     icon={FaLock}
                     defaultValue={state?.data?.password || ''}
                 />
-                <ErrorMessage>{state?.error}</ErrorMessage>
+                <Message>{state?.error}</Message>
                 <SubmitButton isPending={isPending}>Sign Up</SubmitButton>
         </form>
     )
