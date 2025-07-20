@@ -1,26 +1,39 @@
 'use client';
 
 import { useState } from 'react';
-import DashboardSidebar from './DashboardSidebar';
+import DashboardMobileMenu from './DashboardMobileMenu';
 import { AiOutlineMenu } from 'react-icons/ai';
+import DashboardSidebarContent from './user_quizzes/DashboardSidebarContent';
+import Logo from '../layout/navbar/Logo';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <div className="min-h-screen bg-light text-dark flex flex-col lg:flex-row">
-        {/* Topbar for mobile */}
-        <div className="lg:hidden flex items-center justify-start p-4 bg-dark text-white shadow space-x-2">
-            <button onClick={() => setIsSidebarOpen(true)} className="text-2xl">
-            <AiOutlineMenu />
-            </button>
-        </div>
+            {/* Mobile Topbar */}
+            <div className="lg:hidden flex items-center justify-between px-4 py-3 bg-dark text-white shadow-md sticky top-0 z-40">
+                <Logo/>
+                <button
+                    onClick={() => setIsMenuOpen(true)}
+                    className="text-2xl"
+                    aria-label="Open menu"
+                >
+                    <AiOutlineMenu />
+                </button>
+            </div>
 
-        {/* Sidebar */}
-        <DashboardSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            {/* Desktop Sidebar */}
+            <aside className="hidden lg:flex flex-col w-64 bg-dark text-white min-h-screen pt-6 px-4 border-r border-white/10 fixed left-0 top-0 z-30">
+                <div className='mb-6'><Logo/></div>
+                <DashboardSidebarContent />
+            </aside>
 
-        {/* Main content */}
-        <main className="flex-1 lg:ml-64 px-4 pt-8">{children}</main>
+            {/* Mobile Menu */}
+            <DashboardMobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+            {/* Main Content */}
+            <main className="flex-1 lg:ml-64 px-4 pt-6 pb-10">{children}</main>
         </div>
     );
 }
