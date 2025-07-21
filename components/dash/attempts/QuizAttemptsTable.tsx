@@ -3,9 +3,10 @@ import TableHead from '@/components/ui/table/TableHead';
 import TableRow from '@/components/ui/table/TableRow';
 import { UserQuizAttempt } from '@/types/entities/Attempt';
 import { formatDate } from '@/utils/heplers/formatDate';
+import Link from 'next/link';
 
-export default function QuizAttemptDetailsTable({ data,numberOfQuesions }: { data: UserQuizAttempt[],numberOfQuesions:number }) {
-    const headers = ['StartedAt', 'Submitted At', 'Score', 'Questions', 'Status'];
+export default function QuizAttemptDetailsTable({ data, numberOfQuesions }: { data: UserQuizAttempt[], numberOfQuesions: number }) {
+    const headers = ['StartedAt', 'Submitted At', 'Score', 'Questions', 'Status', 'View'];
 
     return (
         <div className="overflow-x-auto rounded-md border border-white/10">
@@ -31,6 +32,13 @@ export default function QuizAttemptDetailsTable({ data,numberOfQuesions }: { dat
                                 >
                                     {attempt.status.replace('_', ' ')}
                                 </span>,
+                                <Link 
+                                    key={`view-${attempt.id}`} 
+                                    href={`/attempt/${attempt.id}`} 
+                                    className="text-secondary hover:underline"
+                                >
+                                    View
+                                </Link>,
                             ]}
                         />
                     ))}
