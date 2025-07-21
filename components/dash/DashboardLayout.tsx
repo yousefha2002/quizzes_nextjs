@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return (
         <div className="min-h-screen bg-light text-dark flex flex-col lg:flex-row">
             {/* Mobile Topbar */}
-            <div className="lg:hidden flex items-center justify-between px-4 py-5 bg-dark text-white shadow-md sticky top-0 z-40">
+            <div className="lg:hidden flex items-center justify-between px-4 py-5 bg-background text-white shadow-md sticky top-0 z-40">
                 <Logo/>
                 <button
                     onClick={() => setIsMenuOpen(true)}
