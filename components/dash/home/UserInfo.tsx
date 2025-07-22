@@ -10,7 +10,6 @@ export default function UserInfo({ name, email, createdAt }: User) {
                 <FaUserCircle className="text-primary w-12 h-12" />
                 <div>
                     <h2 className="text-2xl font-bold">{name}</h2>
-                    <p className="text-muted text-sm">Welcome back 👋</p>
                 </div>
             </div>
 
@@ -22,7 +21,7 @@ export default function UserInfo({ name, email, createdAt }: User) {
 
                 <div className="flex items-center gap-3 text-muted">
                     <FaCalendarAlt className="w-5 h-5 text-primary" />
-                    <span>Joined: {formatDate(createdAt)}</span>
+                    <span>Joined: {formatDate(createdAt,false)}</span>
                 </div>
             </div>
         </section>

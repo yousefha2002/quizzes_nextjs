@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Container from '@/components/ui/Container';
 import QuizQuestion from '@/components/quiz/QuizQuestion';
 import QuizResultDisplay from './QuizResultDisplay';
-import { QuestionDto } from '@/types/Quiz-Questions';
+import { QuestionDto } from '@/types/entities/Question';
 
 export default function QuizStartPage({ questions }: { questions: QuestionDto[] }) {
     const [answers, setAnswers] = useState<(number | null)[]>(Array(questions.length).fill(null));

@@ -4,11 +4,11 @@ import { useState } from 'react';
 import Container from '@/components/ui/Container';
 import QuizQuestion from '@/components/quiz/QuizQuestion';
 import QuizNavigation from '@/components/quiz/QuizNavigation';
-import { AttemptAnswerResponse } from '@/types/AttemptAnswerResponse';
 import { saveAnswer } from '@/actions/save-asnwer';
 import AlertMessage from '../ui/forms/AlertMessage';
 import { submitAttempt } from '@/actions/submit-attempt';
 import { redirect } from 'next/navigation';
+import { AttemptAnswerResponse } from '@/types/entities/Attempt';
 
 export default function QuizAttemptPage({ attempt }: { attempt: AttemptAnswerResponse }) {
     const [currentIndex, setCurrentIndex] = useState(0);

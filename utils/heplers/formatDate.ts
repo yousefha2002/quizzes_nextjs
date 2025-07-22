@@ -1,11 +1,16 @@
-export function formatDate(dateString: string): string {
+export function formatDate(dateString: string, showTime = true): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    const options: Intl.DateTimeFormatOptions = {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true,
-    });
+    };
+
+    if (showTime) {
+        options.hour = '2-digit';
+        options.minute = '2-digit';
+        options.hour12 = true;
+    }
+
+    return date.toLocaleDateString('en-US', options);
 }

@@ -11,8 +11,10 @@ import React from 'react'
 export default async function page() {
     const token = await getUserToken();
     const tokenValue = token?.value;
-    const statistic = await getUserStatistic(tokenValue)
-    const user = await getUser(tokenValue);
+    const [statistic, user] = await Promise.all([
+        getUserStatistic(tokenValue),
+        getUser(tokenValue),
+    ]);
     return (
         <Container>
             <WelcomeMessage/>
