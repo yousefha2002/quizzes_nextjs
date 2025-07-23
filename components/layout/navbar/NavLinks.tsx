@@ -14,6 +14,10 @@ export default function NavLinks({ isLoggedIn, onLinkClick }: Props) {
             Quizzes
         </Link>
 
+        <Link href="/leaderboard" className="text-md text-textBase hover:text-primary transition" onClick={onLinkClick}>
+            Leaderboard
+        </Link>
+
         {isLoggedIn && (
             <Link href="/dashboard" className="text-md text-textBase hover:text-primary transition" onClick={onLinkClick}>
             Dashboard
