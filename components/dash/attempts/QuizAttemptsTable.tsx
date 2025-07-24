@@ -34,7 +34,7 @@ export default function QuizAttemptDetailsTable({ data, numberOfQuesions }: { da
                                 </span>,
                                 <Link 
                                     key={`view-${attempt.id}`} 
-                                    href={`/attempt/${attempt.id}`} 
+                                    href={attempt.status==="in_progress"?`/quizzes/${attempt.quiz}`:`/attempt/${attempt.id}`} 
                                     className="text-secondary hover:underline"
                                 >
                                     View

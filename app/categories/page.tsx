@@ -5,6 +5,7 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import Pagination from "@/components/shared/Pagination";
 import SearchByName from "@/components/ui/forms/SearchByName";
 import { getCategories } from "@/lib/categories";
+import EmptyState from "@/components/shared/EmptyState";
 
 type Props = {
     searchParams: Promise<{ page?: string,name?:string }>;
@@ -21,13 +22,19 @@ export default async function page({ searchParams }: Props) {
             <Container>
                 <SectionTitle>All Quiz Categories</SectionTitle>
                 <SearchByName />
-                <CardGrid
+                {
+                    categories.length===0
+                    ?
+                    <EmptyState/>
+                    :
+                    <CardGrid
                     items={categories}
                     className="mt-8"
                     renderItem={(category) => (
                         <QuizCategoryCard key={category.id} title={category.title} />
                     )}
                 />
+                }
                 {totalPages > 1 && (
                     <Pagination currentPage={currentPage} totalPages={totalPages} />
                 )}
