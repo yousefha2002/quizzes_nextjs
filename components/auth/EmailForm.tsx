@@ -23,7 +23,7 @@ export default function EmailForm() {
                     required
                     placeholder="Enter your new email"
                     icon={MdEmail}
-                    defaultValue={state?.data?.email || ''}
+                    defaultValue={state?.data?.newEmail || ''}
                 />
             </div>
                 <Message>{state?.error}</Message>

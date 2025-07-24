@@ -1,8 +1,8 @@
 import SectionTitle from '@/components/ui/SectionTitle';
 import ClientOnly from '@/components/shared/ClientOnly';
-import NameForm from '@/components/auth/NameForm';
 import { getUser } from '@/lib/user';
 import { getUserToken } from '@/lib/auth';
+import ProfileForm from '@/components/auth/ProfileForm';
 
 export default async function page() {
     const token = await getUserToken();
@@ -12,7 +12,7 @@ export default async function page() {
         <>
             <SectionTitle>Change Name</SectionTitle>
             <ClientOnly>
-                <NameForm defaultName={user.name}/>
+                <ProfileForm defaultBio={user.bio} defaultName={user.name}/>
             </ClientOnly>
         </>
     );

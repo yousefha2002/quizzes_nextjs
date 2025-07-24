@@ -8,11 +8,12 @@ import { login } from '@/actions/login';
 import { redirect } from 'next/navigation';
 import Message from '../ui/forms/Message';
 
-export default function LoginForm() {
+
+export default function LoginForm({redirectTo}:{redirectTo:string}) {
     const [state, action, isPending] = useActionState(login, null);
     if(state?.data?.message)
     {
-        redirect('/dashboard')
+        redirect(redirectTo)
     }
     return (
         <form className="space-y-4" action={action}>

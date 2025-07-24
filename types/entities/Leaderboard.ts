@@ -1,5 +1,6 @@
 export type LeaderboardUser = {
     id: number;
     name: string;
-    points: number;
+    pointsCount: number;
+    userRank:number
 };

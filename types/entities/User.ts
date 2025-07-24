@@ -3,4 +3,5 @@ export type User = {
     createdAt: string;
     email:string
     name:string
+    bio?:string
 };
