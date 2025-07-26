@@ -1,4 +1,4 @@
-import { capitalize } from '@/utils/api/helpers/capitalize'
+import { capitalize } from '@/utils/heplers/capitalize'
 import Link from 'next/link'
 import React from 'react'
 

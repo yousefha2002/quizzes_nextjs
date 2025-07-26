@@ -1,3 +1,4 @@
+import { project_title } from '@/utils/constants'
 import Link from 'next/link'
 import React from 'react'
 
@@ -6,7 +7,7 @@ export default function Footer() {
         <footer className="bg-background text-muted py-10 mt-10 border-t border-[#333]">
             <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
                 <div>
-                <h3 className="text-xl text-primary font-bold">CodeQuiz</h3>
+                <h3 className="text-xl text-primary font-bold">{project_title}</h3>
                 <p className="text-sm mt-2">
                     Challenge your coding skills and earn certificates.
                 </p>
@@ -24,7 +25,7 @@ export default function Footer() {
             </div>
 
             <div className="text-center text-xs text-muted mt-6">
-                &copy; 2025 CodeQuiz. All rights reserved.
+                &copy; 2025 {project_title}. All rights reserved.
             </div>
         </footer>
     )
