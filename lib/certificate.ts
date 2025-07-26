@@ -10,3 +10,8 @@ export async function getCertificatesList(page=1,limit=10,token:string|undefined
 {
     return apiGet<{certificates:BaseCertificate[],totalPages:number}>(`certificate/all?page=${page}&limit=${limit}`,token); 
 }
+
+export async function getCertificatesListByUser(userId:number,page=1,limit=10)
+{
+    return apiGet<{certificates:BaseCertificate[],totalPages:number}>(`certificate/byUser/${userId}?page=${page}&limit=${limit}`); 
+}

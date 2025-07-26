@@ -14,14 +14,12 @@ export default async function LeaderboardPage() {
         tokenValue ? getUserRank(tokenValue) : Promise.resolve(null)
     ]);
 
-    // ألوان المراكز الثلاثة الأولى
     const crownColors = ['text-yellow-400', 'text-gray-300', 'text-amber-700'];
 
     return (
         <Container className="py-16">
             <SectionTitle>Leaderboard</SectionTitle>
 
-            {/* ترتيب المستخدم الحالي */}
             {userRank && (
                 <div className="mb-8 p-4 bg-darkBlueGray text-white rounded shadow border border-white/10">
                     <p className="text-sm text-muted">Your Rank</p>

@@ -5,3 +5,13 @@ export type User = {
     name:string
     bio?:string
 };
+
+export type UserProfile = {
+    id: number;
+    createdAt: string;
+    name:string
+    bio?:string,
+    certificates:number,
+    attemptsCount:number,
+    totalPoints:number
+}
