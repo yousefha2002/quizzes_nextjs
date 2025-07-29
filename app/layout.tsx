@@ -8,11 +8,14 @@ import { getUserToken } from "@/lib/auth";
 const inter = Inter({
   subsets: ['latin'],  // use latin subset for English
   weight: ['400', '700'], // customize weights if you want
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
+  title: "Zerotodev – Interactive Programming Quizzes",
+  description: "Challenge your skills in JavaScript, React, HTML, and more. Earn points and certificates as you learn.",
   icons: {
-    icon: '/favicon.png'
+    icon: '/favicon.png',
   }
 };
 
@@ -21,9 +24,6 @@ export default async function RootLayout({children,}: Readonly<{children: React.
   const isLoggedIn = !!token?.value;
   return (
     <html lang="en" dir="ltr">
-      <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX"></script>
-      </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Header isLoggedIn={isLoggedIn}/>
         <main className="flex-grow">
